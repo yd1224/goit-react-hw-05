@@ -1,7 +1,7 @@
-export const MovieCast = () => {
+export default function MovieCast() {
   return (
     <>
       <div>MovieCast</div>
     </>
   );
-};
+}

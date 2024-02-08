@@ -1,30 +1,21 @@
 import { NavLink, Route, Routes } from "react-router-dom";
-import { HomePage } from "./HomePage/HomePage";
-import { MoviesPage } from "./MoviesPage/MoviesPage";
-import { MovieDetailsPage } from "./MovieDetailsPage/MovieDetailsPage";
-import { MovieCast } from "./MovieCast/MovieCast";
-import { MovieReviews } from "./MovieReviews/MovieReviews";
-import { NotFound } from "./NotFound/NotFound";
+import HomePage from "../pages/HomePage/HomePage";
+import MoviesPage from "../pages/MoviesPage/MoviesPage";
+import MovieDetailsPage from "../pages/MovieDetailsPage/MovieDetailsPage";
+import MovieCast from "../pages/MovieCast/MovieCast";
+import MovieReviews from "../pages/MovieReviews/MovieReviews";
+import NotFound from "../pages/NotFound/NotFound";
 import clsx from "clsx";
 import css from "./App.module.css";
-const buildLinkClass = ({ isActive }) => {
-  return clsx(css.link, isActive && css.active);
-};
+
+// const buildLinkClass = ({ isActive }) => {
+//   return clsx(css.link, isActive && css.active);
+// };
 function App() {
   return (
     <>
-      <nav>
+      {/* <nav>
         <ul>
-          <li>
-            <NavLink className={buildLinkClass} to="/">
-              Home
-            </NavLink>
-          </li>
-          <li>
-            <NavLink className={buildLinkClass} to="/movies">
-              Movies
-            </NavLink>
-          </li>
           <li>
             <NavLink className={buildLinkClass} to="/movies/:movieId"></NavLink>
           </li>
@@ -39,7 +30,7 @@ function App() {
             </NavLink>
           </li>
         </ul>
-      </nav>
+      </nav> */}
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/movies" element={<MoviesPage />} />

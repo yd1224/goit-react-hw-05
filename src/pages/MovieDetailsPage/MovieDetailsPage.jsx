@@ -1,7 +1,7 @@
-export const MovieDetailsPage = () => {
+export default function MovieDetailsPage() {
   return (
     <>
       <div>MovieDetailsPage</div>
     </>
   );
-};
+}

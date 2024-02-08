@@ -1,0 +1,15 @@
+.headerBox {
+  background-color: #333; /* Background color */
+  padding: 10px; /* Padding around the header */
+  padding-left: 25px;
+  display: flex;
+  gap: 30px;
+  flex-direction: row;
+}
+.link {
+  font-size: 20px;
+}
+
+.active {
+  color: #2d7bbd;
+}
