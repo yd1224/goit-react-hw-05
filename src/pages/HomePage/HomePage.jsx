@@ -2,6 +2,7 @@ import { Header } from "../../components/Header/Header";
 import { FetchTrendings } from "../../fetchTrending";
 import { useEffect, useState } from "react";
 import { TrendingList } from "../../components/TrendingList/TrendingList";
+import css from "../HomePage/HomePage.module.css";
 export default function HomePage() {
   const [ShowBtn, SetShowBtn] = useState(true);
   const [firstLoad, SetfirstLoad] = useState(true);
@@ -43,13 +44,13 @@ export default function HomePage() {
   return (
     <>
       <Header />
-      <div>Trending today</div>
+      <div className={css.trendText}>Trending today</div>
       {/* <ul>
         {data.items.map((item) => {
           return <li key={item.id}>{item.title}</li>;
         })}
       </ul> */}
-      <TrendingList values={data.items} />
+      <TrendingList arr={data.items} />
       {data.items.length > 0 && ShowBtn && (
         <button onClick={handleLoadMore}>Load more</button>
       )}

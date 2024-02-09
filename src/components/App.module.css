@@ -4,3 +4,13 @@
 .active {
   color: aqua;
 }
+ul {
+  list-style-type: none;
+}
+
+li {
+  margin-bottom: 10px;
+}
+li:hover {
+  font-size: 17px;
+}
