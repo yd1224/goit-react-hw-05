@@ -1,3 +1,22 @@
 .trendText {
-  font-size: 30px;
+  text-align: center; /* Center the text horizontally */
+  margin-top: 20px; /* Add margin for spacing */
+  font-size: 24px; /* Set the font size */
+  font-weight: bold; /* Make the text bold */
+  color: #646cff; /* Set the text color */
+  text-transform: uppercase; /* Convert the text to uppercase */
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2); /* Add a subtle text shadow */
+  letter-spacing: 1px; /* Add letter spacing for better readability */
+}
+.colorRingWrapperBox {
+  display: flex;
+  justify-content: center;
+}
+.btn {
+  display: flex;
+  margin: 0 auto;
+  margin-bottom: 20px;
+}
+.error {
+  color: red;
 }

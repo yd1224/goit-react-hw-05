@@ -1,14 +1,27 @@
+import css from "../TrendingList/TrendingList.module.css";
 export const TrendingList = ({ arr }) => {
-  console.log(arr);
   return (
-    <ul>
-      {arr.map((item) => {
-        return (
-          <li key={item.id}>
-            <span>{item.title}</span>
-          </li>
-        );
-      })}
-    </ul>
+    <>
+      {arr.length > 0 && (
+        <ul className={css.list}>
+          {arr.map((item) => {
+            return (
+              <li key={item.id}>
+                <div className={css.box}>
+                  <img
+                    className={css.img}
+                    src={`https://image.tmdb.org/t/p/w600_and_h900_bestv2/${item.backdrop_path}`}
+                    alt={item.title}
+                    width={200}
+                    height={250}
+                  />{" "}
+                  <p>{item.title}</p>
+                </div>
+              </li>
+            );
+          })}
+        </ul>
+      )}
+    </>
   );
 };
