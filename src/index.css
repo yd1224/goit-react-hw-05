@@ -75,3 +75,10 @@ p {
   font-size: 18px;
   text-align: center;
 }
+.scroll {
+  position: fixed;
+  bottom: 30px;
+  right: 20px;
+  border-color: #535bf2;
+  background-color: #333;
+}

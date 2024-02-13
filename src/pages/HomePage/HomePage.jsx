@@ -1,18 +1,14 @@
 import { Header } from "../../components/Header/Header";
 import { FetchTrendings } from "../../fetchTrending";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { TrendingList } from "../../components/TrendingList/TrendingList";
 import { ColorRing } from "react-loader-spinner";
-// import { FetchTrendingImg } from "../../fetchTrendingImg";
 import css from "../HomePage/HomePage.module.css";
+
 export default function HomePage() {
   const [ShowBtn, SetShowBtn] = useState(true);
   const [error, SetError] = useState(false);
-  // const [firstLoad, SetfirstLoad] = useState(true);
   const [loader, SetLoader] = useState(true);
-  // const [images, SetImages] = useState({
-  //   imgarr: [],
-  // });
   const [data, SetData] = useState({
     items: [],
   });
@@ -20,7 +16,6 @@ export default function HomePage() {
   const [pages, SetPages] = useState(1);
   useEffect(() => {
     let controller = new AbortController();
-
     async function fetchData() {
       try {
         SetLoader(true);
@@ -48,7 +43,7 @@ export default function HomePage() {
 
     return () => {
       controller.abort();
-      controller = new AbortController(); // Create a new controller for the next fetch operation
+      controller = new AbortController();
       SetLoader(true);
     };
   }, [pages]);
@@ -56,17 +51,21 @@ export default function HomePage() {
   const handleLoadMore = () => {
     SetPages(pages + 1);
   };
+  const SearchRef = useRef();
+  const handleScroll = () => {
+    const dims = SearchRef.current.getBoundingClientRect();
+
+    window.scrollTo({
+      top: dims.top,
+      behavior: "smooth",
+    });
+  };
   return (
     <>
-      <Header />
+      <Header ref={SearchRef} />
 
       <div className={css.trendText}>Trending today</div>
       {error && <p className={css.error}>Ooooops... Try reloading the page</p>}
-      {/* <ul>
-        {data.items.map((item) => {
-          return <li key={item.id}>{item.title}</li>;
-        })}
-      </ul> */}
       <TrendingList arr={data.items} />
       {loader && (
         <div className={css.colorRingWrapperBox}>
@@ -85,6 +84,11 @@ export default function HomePage() {
       {data.items.length > 0 && !loader && ShowBtn && (
         <button className={css.btn} onClick={handleLoadMore}>
           Load more
+        </button>
+      )}
+      {data.items.length > 0 && (
+        <button onClick={handleScroll} className="scroll">
+          Scroll to top
         </button>
       )}
     </>
