@@ -1,0 +1,52 @@
+.img {
+  width: 250px;
+  height: 300px;
+  margin-left: 30px;
+  border-radius: 10px;
+}
+.trendText {
+  text-align: center; /* Center the text horizontally */
+  margin-top: 20px; /* Add margin for spacing */
+  font-size: 24px; /* Set the font size */
+  font-weight: bold; /* Make the text bold */
+  color: #646cff; /* Set the text color */
+  text-transform: uppercase; /* Convert the text to uppercase */
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2); /* Add a subtle text shadow */
+  letter-spacing: 1px; /* Add letter spacing for better readability */
+  margin-bottom: 40px;
+}
+.box {
+  display: flex;
+  gap: 40px;
+}
+.text {
+  text-align: left;
+  max-width: 900px;
+}
+.container {
+  overflow-y: auto;
+  max-height: 300px;
+}
+.h2 {
+  margin-top: 20px;
+  margin-bottom: 10px;
+  font-size: 20px;
+  font-weight: bold;
+  color: #646cff;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+  letter-spacing: 1px;
+}
+.genre {
+  font-size: 18px;
+  font-weight: bold;
+  margin-right: 10px;
+}
+.title {
+  margin-left: 30px;
+  font-size: 20px;
+  font-weight: bold;
+  color: #646cff;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+  letter-spacing: 1px;
+  margin-top: 30px;
+}

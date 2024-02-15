@@ -19,6 +19,7 @@ export default function HomePage() {
     async function fetchData() {
       try {
         SetLoader(true);
+        console.log(loader);
         const data = await FetchTrendings(pages, controller);
         console.log(data);
         SetData((prev) => ({
