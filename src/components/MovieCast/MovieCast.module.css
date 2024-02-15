@@ -1,0 +1,45 @@
+.error {
+  color: red;
+}
+.image {
+  width: 150px;
+  height: 200px;
+  margin-bottom: 5px;
+  border-radius: 10px;
+}
+.box {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+}
+.text {
+  text-align: center;
+  margin: 0;
+  color: #ffffff;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+}
+.wrapper {
+  display: flex;
+  gap: 30px;
+
+  overflow-x: scroll;
+  max-width: 900px;
+  margin: 0 auto;
+  padding-bottom: 10px;
+  margin-bottom: 30px;
+  margin-top: 40px;
+}
+.wrapper::-webkit-scrollbar {
+  height: 10px;
+}
+.wrapper::-webkit-scrollbar-thumb {
+  background: rgb(255, 255, 255, 0.1); /* Color of the scrollbar thumb */
+
+  border-radius: 10px;
+}
+.tbox {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}

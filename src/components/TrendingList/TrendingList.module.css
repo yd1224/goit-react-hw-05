@@ -29,3 +29,6 @@ li {
 .box:hover {
   transform: scale(1.1); /* Scale up the image when hovering */
 }
+.name {
+  color: white;
+}

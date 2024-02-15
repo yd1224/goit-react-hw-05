@@ -1,0 +1,62 @@
+.box {
+  margin-bottom: 40px;
+  border: 1px solid rgb(204, 204, 204, 0.3);
+  border-radius: 10px;
+  margin-left: 30px;
+  margin-right: 30px;
+}
+.authortext {
+  text-align: left;
+  font-size: 20px;
+  font-weight: bold;
+  padding: 0;
+  margin-bottom: 10px;
+}
+
+.reviewcontent {
+  margin-left: 20px;
+  font-size: 17px;
+  text-align: left;
+  text-indent: 20px;
+  margin-bottom: 10px;
+}
+.reviewdate {
+  font-size: 12px;
+  text-align: left;
+  margin-left: 30px;
+  margin-top: 5px;
+}
+/* .readmore {
+  box-shadow: 0px -4px 4px rgba(0, 0, 0, 0.1);
+} */
+.tbox {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin-left: 20px;
+}
+.btndiv_ {
+  position: relative;
+}
+.btndiv {
+  width: 100%;
+  margin-top: -30px;
+  opacity: 1;
+  background: linear-gradient(
+    to bottom,
+    rgba(36, 36, 36, 1),
+    rgba(103, 97, 97, 0.5),
+    rgba(103, 97, 97, 0.5),
+    rgba(36, 36, 36, 1)
+  ); /* Gradient background */
+  height: 50px;
+  position: absolute;
+  bottom: 2.75px;
+}
+.btnDiv {
+  display: flex;
+  justify-content: center;
+}
+.readmore {
+  opacity: 1;
+}

@@ -4,7 +4,11 @@ import { useEffect, useState } from "react";
 import { Header } from "../../components/Header/Header";
 import { NavLink } from "react-router-dom";
 import css from "./MovieDetailsPage.module.css";
+import clsx from "clsx";
 import moment from "moment";
+const buildLinkClass = ({ isActive }) => {
+  return clsx(css.link, isActive && css.active);
+};
 export default function MovieDetailsPage() {
   const [error, SetError] = useState(false);
   const [movie, SetMovie] = useState(null);
@@ -57,14 +61,18 @@ export default function MovieDetailsPage() {
                   {item.name}
                 </span>
               ))}
+              <h2 className={css.title}>Additional information</h2>
+              <div>
+                <NavLink className={buildLinkClass} to="cast">
+                  Cast
+                </NavLink>
+                <NavLink className={buildLinkClass} to="reviews">
+                  Reviews
+                </NavLink>
+              </div>
             </div>
           </div>
 
-          <h2 className={css.title}>Additional information</h2>
-          <div>
-            <NavLink to="cast">Cast</NavLink>
-            <NavLink to="reviews">Reviews</NavLink>
-          </div>
           <Outlet></Outlet>
         </>
       )}

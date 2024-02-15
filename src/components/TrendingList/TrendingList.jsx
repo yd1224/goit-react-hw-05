@@ -17,7 +17,7 @@ export const TrendingList = ({ arr }) => {
                       width={200}
                       height={250}
                     />{" "}
-                    <p>{item.title}</p>
+                    <p className={css.name}>{item.title}</p>
                   </div>
                 </li>
               </Link>
