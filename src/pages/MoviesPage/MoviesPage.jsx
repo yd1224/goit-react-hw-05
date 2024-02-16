@@ -5,15 +5,21 @@ import toast, { Toaster } from "react-hot-toast";
 import css from "./MoviesPage.module.css";
 import { useEffect, useState, useRef } from "react";
 import { ColorRing } from "react-loader-spinner";
+import { Filter } from "../../components/Filter/Filter";
+import { useSearchParams } from "react-router-dom";
 export default function MoviesPage() {
   const [query, SetQuery] = useState("");
   const [ShowBtn, SetShowBtn] = useState(true);
   const [page, SetPage] = useState(1);
+  const [params, setParams] = useSearchParams();
+  const filter = params.get("filter") ?? "";
+  console.log(params.get("a"));
   const [data, Setdata] = useState({
     items: [],
     loading: false,
     error: false,
   });
+  console.log("\\\\\\\\");
   const SearchMovies = async (newQuery) => {
     SetQuery(newQuery);
     SetPage(1);
@@ -80,6 +86,8 @@ export default function MoviesPage() {
   return (
     <>
       <Header></Header>
+      <Filter value={filter} />
+
       <Toaster position="top-right"></Toaster>
       <form ref={SearchRef} className={css.form} onSubmit={handleSubmit}>
         <input
@@ -92,6 +100,7 @@ export default function MoviesPage() {
         />
         <button type="submit">Search</button>
       </form>
+
       {data.error && <p className="error">Ooooops... Try reloading the page</p>}
       {data.items.length > 0 && <MoviesGallery arr={data.items} />}
       {data.loading && (
@@ -107,7 +116,6 @@ export default function MoviesPage() {
           />
         </div>
       )}
-
       {data.items.length > 0 && !data.loading && ShowBtn && (
         <button onClick={handleLoadMore} className={css.btn}>
           Load more
