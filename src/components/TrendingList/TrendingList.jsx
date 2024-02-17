@@ -1,13 +1,14 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import css from "../TrendingList/TrendingList.module.css";
 export const TrendingList = ({ arr }) => {
+  const location = useLocation();
   return (
     <>
       {arr.length > 0 && (
         <ul className={css.list}>
           {arr.map((item) => {
             return (
-              <Link to={`/movies/${item.id}`} key={item.id}>
+              <Link to={`/movies/${item.id}`} key={item.id} state={location}>
                 <li key={item.id}>
                   <div className={css.box}>
                     <img

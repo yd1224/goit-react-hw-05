@@ -40,8 +40,10 @@ export default function MoviesPage() {
     }
     console.log("hahaha");
     params.set("filter", event.target.elements.query.value);
+
     setParams(params);
-    SearchMovies(filter);
+    console.log(params.get("filter"));
+    SearchMovies(params.get("filter"));
 
     event.target.reset();
   }
@@ -49,13 +51,16 @@ export default function MoviesPage() {
     SetPage(page + 1);
   };
   useEffect(() => {
+    SearchMovies(params.get("filter"));
+  }, [params]);
+  useEffect(() => {
     if (query === "") {
       return;
     }
     async function FetchData() {
       try {
         Setdata((prev) => ({ ...prev, loading: true, error: false }));
-
+        console.log("query", query);
         const response = await FetchMovies(query, page);
 
         console.log("response.total_pages", response.total_pages);

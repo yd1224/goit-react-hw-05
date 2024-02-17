@@ -5,8 +5,9 @@ import { TrendingList } from "../../components/TrendingList/TrendingList";
 import { ColorRing } from "react-loader-spinner";
 import css from "../HomePage/HomePage.module.css";
 import { Filter } from "../../components/Filter/Filter";
-import { useSearchParams } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 export default function HomePage() {
+  const location = useLocation();
   const [ShowBtn, SetShowBtn] = useState(true);
   const [error, SetError] = useState(false);
   const [loader, SetLoader] = useState(true);
