@@ -1,4 +1,4 @@
-import { Outlet, useParams } from "react-router-dom";
+import { Link, Outlet, useLocation, useParams } from "react-router-dom";
 import { FetchMovieDetails } from "../../fetchTrending";
 import { useEffect, useState } from "react";
 import { Header } from "../../components/Header/Header";
@@ -10,6 +10,8 @@ const buildLinkClass = ({ isActive }) => {
   return clsx(css.link, isActive && css.active);
 };
 export default function MovieDetailsPage() {
+  const location = useLocation();
+  console.log(location);
   const [error, SetError] = useState(false);
   const [movie, SetMovie] = useState(null);
   const [date, SetDate] = useState("");
@@ -39,9 +41,13 @@ export default function MovieDetailsPage() {
       <Header></Header>
       {movie && (
         <>
+          <Link to={location.state}>
+            <button className={css.btn_}>Go back</button>
+          </Link>
           <h1 className={css.trendText}>
             {movie.title} ({date})
           </h1>
+
           <div className={css.box}>
             <img
               className={css.img}

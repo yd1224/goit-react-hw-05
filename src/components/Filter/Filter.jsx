@@ -1,25 +1,25 @@
 import { useState } from "react";
-export const Filter = ({ value }) => {
-  //   const [hasClicked, sethasClicked] = useState(false);
-
-  //   const handleChange = (evt) => {
-  //     sethasClicked(evt.target.checked);
-  //   };
-  //   console.log(hasClicked);
+export const Filter = ({ value, onChange }) => {
+  console.log("value", value);
   return (
     // <div>
     //   <div>
     //     <input
     //       type="checkbox"
-    //       checked={hasClicked}
+    //       checked={value}
     //       name="popular"
-    //       onChange={handleChange}
+    //       onChange={(evt) => onChange(evt.target.checked)}
     //     />
-    //     <label htmlFor="scales">Scales</label>
+    //     <label htmlFor="popular">Scales</label>
     //   </div>
     // </div>
     <div>
-      <input type="text" />
+      <input
+        type="text"
+        value={value}
+        placeholder="Search for movie"
+        onChange={(evt) => onChange(evt.target.value)}
+      />
     </div>
   );
 };

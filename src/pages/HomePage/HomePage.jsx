@@ -4,7 +4,8 @@ import { useEffect, useState, useRef } from "react";
 import { TrendingList } from "../../components/TrendingList/TrendingList";
 import { ColorRing } from "react-loader-spinner";
 import css from "../HomePage/HomePage.module.css";
-
+import { Filter } from "../../components/Filter/Filter";
+import { useSearchParams } from "react-router-dom";
 export default function HomePage() {
   const [ShowBtn, SetShowBtn] = useState(true);
   const [error, SetError] = useState(false);
@@ -12,7 +13,16 @@ export default function HomePage() {
   const [data, SetData] = useState({
     items: [],
   });
+  // const [params, setParams] = useSearchParams();
 
+  // const filter = params.get("filter") ?? false;
+  // const changeFilter = (newFilter) => {
+  //   params.set("filter", newFilter);
+  //   setParams(params);
+  // };
+  // const FilteredMovies = data.items.filter((item) =>
+  //   item.title.toLowerCase().includes(filter.toLowerCase())
+  // );
   const [pages, SetPages] = useState(1);
   useEffect(() => {
     let controller = new AbortController();
@@ -67,6 +77,10 @@ export default function HomePage() {
 
       <div className={css.trendText}>Trending today</div>
       {error && <p className={css.error}>Ooooops... Try reloading the page</p>}
+      {/* {data.items.length > 0 && (
+        <Filter value={filter} onChange={changeFilter} />
+      )}
+      <TrendingList arr={FilteredMovies} /> */}
       <TrendingList arr={data.items} />
       {loader && (
         <div className={css.colorRingWrapperBox}>

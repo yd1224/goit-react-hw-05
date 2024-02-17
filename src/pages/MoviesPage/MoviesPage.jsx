@@ -5,22 +5,25 @@ import toast, { Toaster } from "react-hot-toast";
 import css from "./MoviesPage.module.css";
 import { useEffect, useState, useRef } from "react";
 import { ColorRing } from "react-loader-spinner";
-import { Filter } from "../../components/Filter/Filter";
 import { useSearchParams } from "react-router-dom";
 export default function MoviesPage() {
+  const [params, setParams] = useSearchParams();
+
+  const filter = params.get("filter") ?? "";
+  console.log(filter);
   const [query, SetQuery] = useState("");
   const [ShowBtn, SetShowBtn] = useState(true);
   const [page, SetPage] = useState(1);
-  const [params, setParams] = useSearchParams();
-  const filter = params.get("filter") ?? "";
-  console.log(params.get("a"));
+
   const [data, Setdata] = useState({
     items: [],
     loading: false,
     error: false,
   });
+
   console.log("\\\\\\\\");
   const SearchMovies = async (newQuery) => {
+    console.log("newQuery", newQuery);
     SetQuery(newQuery);
     SetPage(1);
     Setdata({
@@ -36,7 +39,9 @@ export default function MoviesPage() {
       return;
     }
     console.log("hahaha");
-    SearchMovies(event.target.elements.query.value);
+    params.set("filter", event.target.elements.query.value);
+    setParams(params);
+    SearchMovies(filter);
 
     event.target.reset();
   }
@@ -86,7 +91,6 @@ export default function MoviesPage() {
   return (
     <>
       <Header></Header>
-      <Filter value={filter} />
 
       <Toaster position="top-right"></Toaster>
       <form ref={SearchRef} className={css.form} onSubmit={handleSubmit}>
@@ -102,6 +106,7 @@ export default function MoviesPage() {
       </form>
 
       {data.error && <p className="error">Ooooops... Try reloading the page</p>}
+
       {data.items.length > 0 && <MoviesGallery arr={data.items} />}
       {data.loading && (
         <div className={css.colorRingWrapperBox}>
