@@ -11,6 +11,8 @@ const buildLinkClass = ({ isActive }) => {
 };
 export default function MovieDetailsPage() {
   const location = useLocation();
+
+  const BackLinkRef = useRef(location.state);
   console.log(location);
   const [error, SetError] = useState(false);
   const [movie, SetMovie] = useState(null);
@@ -41,7 +43,7 @@ export default function MovieDetailsPage() {
       <Header></Header>
       {movie && (
         <>
-          <Link to={location.state}>
+          <Link to={location.state ?? "/movies"}>
             <button className={css.btn_}>Go back</button>
           </Link>
           <h1 className={css.trendText}>
