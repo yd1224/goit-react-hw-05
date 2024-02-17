@@ -51,6 +51,9 @@ export default function MoviesPage() {
     SetPage(page + 1);
   };
   useEffect(() => {
+    if (params.get("filter") === null) {
+      return;
+    }
     SearchMovies(params.get("filter"));
   }, [params]);
   useEffect(() => {
