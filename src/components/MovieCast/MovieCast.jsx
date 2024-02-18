@@ -3,7 +3,7 @@ import { FetchCast } from "../../fetchTrending";
 import { useParams } from "react-router-dom";
 
 import css from "./MovieCast.module.css";
-export const MovieCast = () => {
+export default function MovieCast() {
   const { movieId } = useParams();
   const [error, SetError] = useState(false);
   const [cast, SetCast] = useState([]);
@@ -41,4 +41,4 @@ export const MovieCast = () => {
       </div>
     </>
   );
-};
+}

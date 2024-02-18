@@ -14,3 +14,7 @@ li {
 li:hover {
   font-size: 17px;
 }
+.colorRingWrapperBox {
+  display: flex;
+  justify-content: center;
+}

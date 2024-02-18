@@ -1,9 +1,10 @@
 import { Link, Outlet, useLocation, useParams } from "react-router-dom";
 import { FetchMovieDetails } from "../../fetchTrending";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef, Suspense } from "react";
 import { Header } from "../../components/Header/Header";
 import { NavLink } from "react-router-dom";
 import css from "./MovieDetailsPage.module.css";
+import { ColorRing } from "react-loader-spinner";
 import clsx from "clsx";
 import moment from "moment";
 const buildLinkClass = ({ isActive }) => {
@@ -13,7 +14,7 @@ export default function MovieDetailsPage() {
   const location = useLocation();
 
   const BackLinkRef = useRef(location.state);
-  console.log(location);
+  console.log(BackLinkRef);
   const [error, SetError] = useState(false);
   const [movie, SetMovie] = useState(null);
   const [date, SetDate] = useState("");
@@ -43,7 +44,7 @@ export default function MovieDetailsPage() {
       <Header></Header>
       {movie && (
         <>
-          <Link to={location.state ?? "/movies"}>
+          <Link to={BackLinkRef.current ?? "/movies"}>
             <button className={css.btn_}>Go back</button>
           </Link>
           <h1 className={css.trendText}>
@@ -80,8 +81,29 @@ export default function MovieDetailsPage() {
               </div>
             </div>
           </div>
-
-          <Outlet></Outlet>
+          <Suspense
+            fallback={
+              <div className={css.colorRingWrapperBox}>
+                <ColorRing
+                  visible={true}
+                  height="80"
+                  width="80"
+                  ariaLabel="color-ring-loading"
+                  wrapperStyle={{}}
+                  wrapperClass="color-ring-wrapper"
+                  colors={[
+                    "#646cff",
+                    "#a0a1c3",
+                    "#4044d0",
+                    "#40a8d0",
+                    "#021f29",
+                  ]}
+                />
+              </div>
+            }
+          >
+            <Outlet />
+          </Suspense>
         </>
       )}
     </>

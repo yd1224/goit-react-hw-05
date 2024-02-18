@@ -1,14 +1,15 @@
-import { Route, Routes } from "react-router-dom";
-import HomePage from "../pages/HomePage/HomePage";
-import MoviesPage from "../pages/MoviesPage/MoviesPage";
-import MovieDetailsPage from "../pages/MovieDetailsPage/MovieDetailsPage";
-import { MovieCast } from "../components/MovieCast/MovieCast";
-import MovieReviews from "../components/MovieReviews/MovieReviews";
-import NotFound from "../pages/NotFound/NotFound";
-
-// const buildLinkClass = ({ isActive }) => {
-//   return clsx(css.link, isActive && css.active);
-// };
+import { Suspense, lazy } from "react";
+import { Routes, Route } from "react-router-dom";
+const NotFound = lazy(() => import("../pages/NotFound/NotFound"));
+const MovieDetailsPage = lazy(() =>
+  import("../pages/MovieDetailsPage/MovieDetailsPage")
+);
+const HomePage = lazy(() => import("../pages/HomePage/HomePage"));
+const MoviesPage = lazy(() => import("../pages/MoviesPage/MoviesPage"));
+const MovieCast = lazy(() => import("../components/MovieCast/MovieCast"));
+const MovieReviews = lazy(() =>
+  import("../components/MovieReviews/MovieReviews")
+);
 function App() {
   return (
     <>
@@ -29,16 +30,18 @@ function App() {
           </li>
         </ul>
       </nav> */}
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/movies" element={<MoviesPage />} />
-        <Route path="/movies/:movieId" element={<MovieDetailsPage />}>
-          <Route path="cast" element={<MovieCast />} />
-          <Route path="reviews" element={<MovieReviews />} />
-        </Route>
+      <Suspense fallback={null}>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/movies" element={<MoviesPage />} />
+          <Route path="/movies/:movieId" element={<MovieDetailsPage />}>
+            <Route path="cast" element={<MovieCast />} />
+            <Route path="reviews" element={<MovieReviews />} />
+          </Route>
 
-        <Route path="*" element={<NotFound />} />
-      </Routes>
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </Suspense>
     </>
   );
 }
