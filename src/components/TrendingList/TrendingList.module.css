@@ -18,6 +18,7 @@ li {
   align-content: center;
   flex-direction: row;
   gap: 40px;
+  padding-right: 40px;
 }
 .img {
   border-radius: 10px;
