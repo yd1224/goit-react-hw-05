@@ -7,6 +7,7 @@
   text-transform: uppercase; /* Convert the text to uppercase */
   text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2); /* Add a subtle text shadow */
   letter-spacing: 1px; /* Add letter spacing for better readability */
+  margin-bottom: 30px;
 }
 .colorRingWrapperBox {
   display: flex;
@@ -16,6 +17,7 @@
   display: flex;
   margin: 0 auto;
   margin-bottom: 20px;
+  margin-top: 40px;
 }
 .error {
   color: red;

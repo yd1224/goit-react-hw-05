@@ -2,7 +2,7 @@
   color: red;
 }
 .image {
-  width: 150px;
+  width: 160px;
   height: 200px;
   margin-bottom: 5px;
   border-radius: 10px;
@@ -12,6 +12,7 @@
   flex-direction: column;
   align-content: center;
   justify-content: center;
+  height: fit-content;
 }
 .text {
   text-align: center;
@@ -26,9 +27,8 @@
   overflow-x: scroll;
   max-width: 900px;
   margin: 0 auto;
-  padding-bottom: 10px;
   margin-bottom: 30px;
-  margin-top: 40px;
+  margin-top: 60px;
 }
 .wrapper::-webkit-scrollbar {
   height: 10px;

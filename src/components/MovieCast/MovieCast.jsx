@@ -3,41 +3,48 @@ import { FetchCast } from "../../fetchTrending";
 import { useParams } from "react-router-dom";
 
 import css from "./MovieCast.module.css";
+import placeholderImage from "../../../person-placeholder.jpg"; // Import your placeholder image
+
 export default function MovieCast() {
   const { movieId } = useParams();
-  const [error, SetError] = useState(false);
-  const [cast, SetCast] = useState([]);
+  const [error, setError] = useState(false);
+  const [cast, setCast] = useState([]);
+
   useEffect(() => {
-    async function FetchData() {
+    async function fetchData() {
       try {
-        const FetchedCast = await FetchCast(movieId);
-        SetCast(FetchedCast.cast);
+        const fetchedCast = await FetchCast(movieId);
+        setCast(fetchedCast.cast);
       } catch (error) {
-        SetError(true);
+        setError(true);
       }
     }
-    FetchData();
+    fetchData();
   }, [movieId]);
+
   return (
     <>
       {error && <p className={css.error}>Ooooops... Try reloading the page</p>}
       <div className={css.wrapper}>
-        {cast.length > 0 &&
-          cast.map((item) => {
-            return (
-              <div className={css.box} key={item.id}>
-                <img
-                  className={css.image}
-                  src={`https://image.tmdb.org/t/p/w500${item.profile_path}`}
-                  alt={item.name}
-                />
-                <div className={css.tbox}>
-                  <p className={css.text}>{item.name}</p>
-                  <p className={css.text}>({item.character})</p>
-                </div>
-              </div>
-            );
-          })}
+        {cast.map((item) => (
+          <div className={css.box} key={item.id}>
+            <img
+              className={css.image}
+              src={
+                item.profile_path
+                  ? `https://image.tmdb.org/t/p/w500${item.profile_path}`
+                  : placeholderImage
+              }
+              alt={item.name}
+              width={160}
+              height={200}
+            />
+            <div className={css.tbox}>
+              <p className={css.text}>{item.name}</p>
+              <p className={css.text}>({item.character})</p>
+            </div>
+          </div>
+        ))}
       </div>
     </>
   );

@@ -82,3 +82,70 @@ p {
   border-color: #535bf2;
   background-color: #333;
 }
+.main-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 50px;
+  margin-top: 50px;
+  align-items: stretch;
+}
+.film-box {
+  width: 200px;
+
+  overflow: hidden;
+  transition: transform 0.3s ease; /* Smooth transition for scale */
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.4);
+  padding-bottom: 10px;
+  border-radius: 10px;
+  position: relative;
+}
+
+/* Existing styles */
+.film-img img {
+  width: 100%;
+  height: auto;
+}
+
+.film-box:hover {
+  transform: scale(1.1); /* Scale up on hover */
+}
+
+.film-name {
+  padding: 10px;
+  text-align: center;
+  color: white;
+  text-align: center;
+}
+.star {
+  z-index: 1000;
+  top: 4px;
+  right: 4px;
+  color: rgb(255, 183, 0);
+}
+.star-container {
+  position: absolute;
+  z-index: 1000;
+  top: 4px;
+  right: 4px;
+}
+.star {
+  animation: increaseScale 1s infinite; /* Apply infinite scale animation on hover */
+}
+
+@keyframes increaseScale {
+  0% {
+    transform: scale(1); /* Initial scale */
+  }
+  50% {
+    transform: scale(1.05); /* Increased scale */
+  }
+  100% {
+    transform: scale(1); /* Initial scale */
+  }
+}
